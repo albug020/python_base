@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+goods = {}
+
 # Есть словарь кодов товаров
 
 goods = {
@@ -49,7 +51,52 @@ print('Лампа -', lamps_quantity, 'шт, стоимость', lamps_cost, '�
 # WARNING для знающих циклы: БЕЗ циклов. Да, с переменными; да, неэффективно; да, копипаста.
 # Это задание на ручное вычисление - что бы потом понять как работают циклы и насколько с ними проще жить.
 
-# TODO здесь ваш код
+table_code = goods['Стол']
+table_item_1 = store[table_code][0]
+table_item_2 = store[table_code][1]
+table_quantity_1 = table_item_1['quantity']
+table_quantity_2 = table_item_2['quantity']
+table_quantity = table_quantity_1 + table_quantity_2
+table_price_1 = table_item_1['price']
+table_price_2 = table_item_2['price']
+table_cost = (table_quantity_1 * table_price_1) + (table_quantity_2 * table_price_2)
+print('Стол -', table_quantity, 'шт, стоимость', table_cost, 'руб')
+
+divan_code = goods['Диван']
+divan_item_1 = store[divan_code][0]
+divan_item_2 = store[divan_code][1]
+divan_quantity_1 = divan_item_1['quantity']
+divan_quantity_2 = divan_item_2['quantity']
+divan_quantity = divan_quantity_1 + divan_quantity_2
+divan_price_1 = divan_item_1['price']
+divan_price_2 = divan_item_2['price']
+divan_cost = (divan_quantity_1 * divan_price_1) + (divan_quantity_2 * divan_price_2)
+print('Диван -', divan_quantity, 'шт, стоимость', divan_cost, 'руб')
+
+stool_code = goods['Стул']
+stool_item_1 = store[stool_code][0]
+stool_item_2 = store[stool_code][1]
+stool_item_3 = store[stool_code][2]
+stool_quantity_1 = stool_item_1['quantity']
+stool_quantity_2 = stool_item_2['quantity']
+stool_quantity_3 = stool_item_3['quantity']
+stool_quantity = stool_quantity_1 + stool_quantity_2 + stool_quantity_3
+stool_price_1 = stool_item_1['price']
+stool_price_2 = stool_item_2['price']
+stool_price_3 = stool_item_3['price']
+stool_cost = (stool_quantity_1 * stool_price_1) + (stool_quantity_2 * stool_price_2) + (stool_quantity_3 * stool_price_3)
+print('Стул -', stool_quantity, 'шт, стоимость', stool_cost, 'руб')
+
+
+for title, code in goods.items():  # Используем функцию .items() для получения ключа и значения  из словаря goods.
+    total_quantity = 0  # Создаем переменную накопитель количества товаров.
+    total_cost = 0  # Создаем переменную накопитель стоимости товаров.
+    for goods in store[code]:
+        total_quantity += goods['quantity']
+        total_cost += goods['price'] * goods['quantity']
+
+    print(title, " - ", total_quantity, " шт, ", 'стоимость', total_cost, " руб")
+
 
 ##########################################################################################
 # ВНИМАНИЕ! После того как __ВСЯ__ домашняя работа сделана и запушена на сервер,         #
